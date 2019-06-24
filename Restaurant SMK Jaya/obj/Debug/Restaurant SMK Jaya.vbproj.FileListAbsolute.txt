@@ -1,0 +1,17 @@
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\Restaurant SMK Jaya.exe.config
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\Restaurant SMK Jaya.exe
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\Restaurant SMK Jaya.pdb
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\Restaurant SMK Jaya.xml
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant SMK Jaya.vbprojResolveAssemblyReference.cache
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.Resources.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant SMK Jaya.vbproj.GenerateResource.Cache
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant SMK Jaya.exe
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant SMK Jaya.xml
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant SMK Jaya.pdb
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormLogin.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormAdmin.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormCashier.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormChef.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormEmployee.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormMember.resources
+c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormMenu.resources
