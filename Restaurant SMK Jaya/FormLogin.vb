@@ -30,9 +30,11 @@ Public Class FormLogin
                         Dim f As New FormAdmin
                         f.Show()
                     Case "cashier"
-
+                        Dim f As New FormCashier
+                        f.Show()
                     Case "chef"
-
+                        Dim f As New FormChef
+                        f.Show()
                 End Select
 
                 reader.Close()

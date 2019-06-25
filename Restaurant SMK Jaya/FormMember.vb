@@ -7,6 +7,20 @@ Public Class FormMember
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim util As New Util
+        Dim ls As New List(Of TextBox)
+        ls.Add(tbName)
+        ls.Add(tbEmail)
+        ls.Add(tbHandphone)
+        If Not util.TextboxValidation(ls) Then
+            Return
+        End If
+        If Not util.EmailValidation(tbEmail.Text) Then
+            Return
+        End If
+        If Not util.NumberValidation(tbHandphone.Text) Then
+            Return
+        End If
         If id Is Nothing Then
             AddMember()
         Else
@@ -19,7 +33,7 @@ Public Class FormMember
             koneksi.Open()
         End If
         Dim memberId = ""
-        Dim checkid As New SqlCommand("Select top(1) [MemberId] from [MsMember] order by cast(Substring([EmployeeId],4,5) as int) desc", koneksi)
+        Dim checkid As New SqlCommand("Select top(1) [MemberId] from [MsMember] order by cast(Substring([MemberId],4,5) as int) desc", koneksi)
         Dim reader = checkid.ExecuteReader
         If reader.Read Then
             Select Case Integer.Parse(reader.GetString(0).Substring(3, 5))

@@ -7,12 +7,32 @@ Public Class FormEmployee
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim util As New Util
+        Dim ls As New List(Of TextBox)
+        ls.Add(tbName)
+        ls.Add(tbEmail)
+        ls.Add(tbHandphone)
+
+        If Not util.TextboxValidation(ls) Then
+            Return
+        End If
+
+        If Not util.EmailValidation(tbEmail.Text) Then
+            Return
+        End If
+
+        If Not util.NumberValidation(tbHandphone.Text) Then
+            Return
+        End If
+        If cbPosition.SelectedIndex = -1 Then
+            MessageBox.Show(Nothing, "Semua field harus terisi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
         If id Is Nothing Then
             AddEmployee()
         Else
             EditEmployee()
         End If
-        
+
     End Sub
 
     Sub AddEmployee()
@@ -50,8 +70,9 @@ Public Class FormEmployee
         cmd.Parameters.AddWithValue("@email", tbEmail.Text)
         cmd.Parameters.AddWithValue("@pass", pass)
         cmd.Parameters.AddWithValue("@phone", tbHandphone.Text)
-        cmd.Parameters.AddWithValue("@position", cbPosition.SelectedValue.ToString)
+        cmd.Parameters.AddWithValue("@position", cbPosition.SelectedItem)
         If cmd.ExecuteNonQuery = 1 Then
+            MessageBox.Show(Nothing, "Berhasil menambahkan pegawai dengan password='" + pass + "'", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Me.DialogResult = DialogResult.OK
             Close()
         Else
@@ -69,7 +90,7 @@ Public Class FormEmployee
         cmd.Parameters.AddWithValue("@name", tbName.Text)
         cmd.Parameters.AddWithValue("@email", tbEmail.Text)
         cmd.Parameters.AddWithValue("@phone", tbHandphone.Text)
-        cmd.Parameters.AddWithValue("@position", cbPosition.SelectedValue.ToString)
+        cmd.Parameters.AddWithValue("@position", cbPosition.SelectedItem)
         If cmd.ExecuteNonQuery = 1 Then
             Me.DialogResult = DialogResult.OK
             Close()
@@ -77,5 +98,24 @@ Public Class FormEmployee
             MessageBox.Show(Nothing, "Gagal mengedit pegawai", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
+    End Sub
+
+    Private Sub FormEmployee_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If id IsNot Nothing Then
+            If koneksi.State = ConnectionState.Closed Then
+                koneksi.Open()
+            End If
+            Dim cmd As New SqlCommand("Select * from [MsEmployee] where [EmployeeId]=@id", koneksi)
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                tbName.Text = reader.GetString(1)
+                tbEmail.Text = reader.GetString(2)
+                tbHandphone.Text = reader.GetString(4)
+                cbPosition.SelectedItem = reader.GetString(5)
+            End If
+            reader.Close()
+            koneksi.Close()
+        End If
     End Sub
 End Class
