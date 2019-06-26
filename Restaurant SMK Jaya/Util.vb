@@ -59,7 +59,7 @@ Public Class Util
             End If
         End If
         reader.Close()
-        koneksi.Close()
+
 
         Dim lowAlpha = "abcdefghijklmnopqrstuvwxyz"
         Dim upAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -98,7 +98,18 @@ Public Class Util
             MessageBox.Show(Nothing, "Password baru harus sama dengan konfirmasi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Return False
         End If
-        Return True
+        Dim command As New SqlCommand("Update [MsEmployee] set [Password]=@password where [EmployeeId]=@id", koneksi)
+        command.Parameters.AddWithValue("@password", newPw)
+        command.Parameters.AddWithValue("@id", My.Settings.Id)
+        If command.ExecuteNonQuery = 1 Then
+            koneksi.Close()
+            Return True
+        Else
+            koneksi.Close()
+            MessageBox.Show(Nothing, "Gagal mengubah password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
     End Function
 
 End Class

@@ -27,9 +27,7 @@ Public Class FormCashier
     End Sub
 
     Sub GetMenu()
-        If konek.State = ConnectionState.Closed Then
-            konek.Open()
-        End If
+        CekKoneksi()
         Dim cmd As New SqlDataAdapter("Select [MenuId],[Name],[Price] from [MsMenu]", konek)
         Dim ds As New DataSet
         cmd.Fill(ds)
@@ -37,10 +35,21 @@ Public Class FormCashier
         konek.Close()
     End Sub
 
-    Sub GetOrderId()
-        If konek.State = ConnectionState.Closed Then
-            konek.Open()
+    Sub GetTable()
+        CekKoneksi()
+        Dim cmd As New SqlCommand("Select top(1) [TableId] from [MsTable] where [Status]=0", konek)
+        Dim reader = cmd.ExecuteReader
+        If reader.Read Then
+            lblTable.Text = "Table : " + reader.GetInt32(0).ToString
+        Else
+            MessageBox.Show("Maaf,restoran masih penuh")
         End If
+        reader.Close()
+        konek.Close()
+    End Sub
+
+    Sub GetOrderId()
+        CekKoneksi()
         Dim dataId = New DataTable
         dataId.Columns.Add("OrderId")
         Dim cmd As New SqlCommand("Select [OrderId] from [HeaderOrder] where [Payment]='-'", konek)
@@ -93,11 +102,14 @@ Public Class FormCashier
 
         cbPayment.SelectedIndex = 0
         cbBankName.SelectedIndex = 0
+
+        GetTable()
     End Sub
 
     Private Sub btnAddOrder_Click(sender As Object, e As EventArgs) Handles btnAddOrder.Click
         ButtonNav(sender, panelAddOrder)
         GetMenu()
+        GetTable()
         dt.Clear()
     End Sub
 
@@ -179,8 +191,7 @@ Public Class FormCashier
             idOrder += Date.Now.Month.ToString
         End If
 
-        Dim checkid As New SqlCommand("Select [OrderId] from [HeaderOrder] where [OrderId] like '@id%' order by cast(substring([OrderId],7,4)  as int) desc", konek)
-        checkid.Parameters.AddWithValue("@id", idOrder)
+        Dim checkid As New SqlCommand("Select [OrderId] from [HeaderOrder] where [OrderId] like '" + idOrder + "%' order by cast(substring([OrderId],7,4)  as int) desc", konek)
         Dim reader = checkid.ExecuteReader
         If reader.Read Then
             Select Case Integer.Parse(reader.GetString(0).Substring(6, 4))
@@ -198,9 +209,10 @@ Public Class FormCashier
         End If
         reader.Close()
 
-        Dim cmd As New SqlCommand("Insert into [HeaderOrder] values(@id,@employee,@member,@date,'-','-','-')", konek)
+        Dim cmd As New SqlCommand("Insert into [HeaderOrder] values(@id,@employee,@member,@date,'-','-','-',@table)", konek)
         cmd.Parameters.AddWithValue("@id", idOrder)
         cmd.Parameters.AddWithValue("@employee", My.Settings.Id)
+        cmd.Parameters.AddWithValue("@table", lblTable.Text.Substring(8))
         If checkNotMember.Checked Then
             cmd.Parameters.AddWithValue("@member", "MBR00001")
         Else
@@ -210,6 +222,10 @@ Public Class FormCashier
 
         If cmd.ExecuteNonQuery = 1 Then
             Dim x = 0
+            Dim settable = New SqlCommand("Update [MsTable] set [Status]=1 where [TableId]=@id", konek)
+            settable.Parameters.AddWithValue("@id", lblTable.Text.Substring(8))
+            settable.ExecuteNonQuery()
+
             While x < dt.Rows.Count
                 Dim insertDetail As New SqlCommand("Insert into [DetailOrder]([OrderId],[MenuId],[Qty],[Price],[Status]) values(@id,@menu,@qty,@price,'Pending')", konek)
                 insertDetail.Parameters.AddWithValue("@id", idOrder)
@@ -220,6 +236,7 @@ Public Class FormCashier
                 x += 1
             End While
             MessageBox.Show(Nothing, "Pemesanan berhasil", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            GetTable()
             dt.Clear()
         Else
             MessageBox.Show(Nothing, "Pemesanan gagal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -257,6 +274,14 @@ Public Class FormCashier
         End If
 
         If cmd.ExecuteNonQuery = 1 Then
+            Dim gettableid = New SqlCommand("Select [Tableid] from [HeaderOrder] where [OrderId]=@id", konek)
+            gettableid.Parameters.AddWithValue("@id", cbOrderId.SelectedValue.ToString)
+            Dim reader = gettableid.ExecuteReader
+            If reader.Read Then
+                Dim settable = New SqlCommand("Update [MsTable] set [Status]=0 where [TableId]=@id", konek)
+                settable.Parameters.AddWithValue("@id", reader.GetInt32(0))
+                settable.ExecuteNonQuery()
+            End If
             MessageBox.Show(Nothing, "Pembayaran berhasil", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information)
             lblKembalian.Text = "Rp. 0"
             tbCardNumber.Text = ""
@@ -342,10 +367,61 @@ Public Class FormCashier
     End Sub
 
     Sub GenerateReport()
+        Dim ls As New List(Of String)
+        ls.Add("January")
+        ls.Add("February")
+        ls.Add("March")
+        ls.Add("April")
+        ls.Add("May")
+        ls.Add("June")
+        ls.Add("July")
+        ls.Add("August")
+        ls.Add("September")
+        ls.Add("October")
+        ls.Add("November")
+        ls.Add("December")
+        dtReportFrom.MaxDate = dtReportTo.Value
+        dtReportTo.MinDate = dtReportFrom.Value
+        CekKoneksi()
+        Dim fromDate = dtReportFrom.Value
+        Dim toDate = dtReportTo.Value
+        Dim dt As New DataTable
+        dt.Columns.Add("Month")
+        dt.Columns.Add("Total")
+        While fromDate <= toDate
+            Dim idOrder = fromDate.Year.ToString
+            If fromDate.Month < 10 Then
+                idOrder += "0" + fromDate.Month.ToString
+            Else
+                idOrder += fromDate.Month.ToString
+            End If
+
+            Dim cmd As New SqlCommand("Select coalesce(sum([Price]),0) as total from [DetailOrder] where [OrderId] like '" + idOrder + "%'", konek)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                If Not reader.IsDBNull(0) Then
+                    dt.Rows.Add(ls(fromDate.Month - 1) + " " + fromDate.Year.ToString, reader.GetValue(0))
+                End If
+
+            End If
+            fromDate = fromDate.AddMonths(1)
+        End While
+        chReport.DataSource = dt
+        chReport.Series.FindByName("Series1").XValueMember = "Month"
+        chReport.Series.FindByName("Series1").YValueMembers = "Total"
 
     End Sub
 
     Private Sub dtReportFrom_ValueChanged(sender As Object, e As EventArgs) Handles dtReportFrom.ValueChanged
+        GenerateReport()
+    End Sub
 
+    Private Sub dtReportTo_ValueChanged(sender As Object, e As EventArgs) Handles dtReportTo.ValueChanged
+        GenerateReport()
+    End Sub
+
+    Private Sub btnReport_Click(sender As Object, e As EventArgs) Handles btnReport.Click
+        ButtonNav(sender, panelReport)
+        GenerateReport()
     End Sub
 End Class

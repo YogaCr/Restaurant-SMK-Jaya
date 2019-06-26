@@ -27,6 +27,7 @@ Partial Class FormCashier
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.btnPassword = New System.Windows.Forms.Button()
+        Me.btnReport = New System.Windows.Forms.Button()
         Me.btnPayment = New System.Windows.Forms.Button()
         Me.btnAddOrder = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -41,6 +42,11 @@ Partial Class FormCashier
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cbMemberList = New System.Windows.Forms.ComboBox()
         Me.dgAddOrderList = New System.Windows.Forms.DataGridView()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.tbOrderQty = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -54,32 +60,27 @@ Partial Class FormCashier
         Me.Label4 = New System.Windows.Forms.Label()
         Me.panelPayment = New System.Windows.Forms.Panel()
         Me.btnPaymentSave = New System.Windows.Forms.Button()
-        Me.gbPayCredit = New System.Windows.Forms.GroupBox()
-        Me.gbCash = New System.Windows.Forms.GroupBox()
-        Me.tbCashBayar = New System.Windows.Forms.TextBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.lblKembalian = New System.Windows.Forms.Label()
-        Me.tbCardNumber = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.cbBankName = New System.Windows.Forms.ComboBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.cbPayment = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.cbOrderId = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.dgPayment = New System.Windows.Forms.DataGridView()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.gbCash = New System.Windows.Forms.GroupBox()
+        Me.tbCashBayar = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.lblKembalian = New System.Windows.Forms.Label()
+        Me.gbPayCredit = New System.Windows.Forms.GroupBox()
+        Me.tbCardNumber = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.cbBankName = New System.Windows.Forms.ComboBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.panelPassword = New System.Windows.Forms.Panel()
         Me.btnSavePassword = New System.Windows.Forms.Button()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -90,12 +91,12 @@ Partial Class FormCashier
         Me.tbOldPassword = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.panelReport = New System.Windows.Forms.Panel()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.chReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.dtReportFrom = New System.Windows.Forms.DateTimePicker()
         Me.dtReportTo = New System.Windows.Forms.DateTimePicker()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.dtReportFrom = New System.Windows.Forms.DateTimePicker()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.chReport = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Label21 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.panelAddOrder.SuspendLayout()
@@ -103,9 +104,9 @@ Partial Class FormCashier
         CType(Me.pbMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelPayment.SuspendLayout()
-        Me.gbPayCredit.SuspendLayout()
-        Me.gbCash.SuspendLayout()
         CType(Me.dgPayment, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbCash.SuspendLayout()
+        Me.gbPayCredit.SuspendLayout()
         Me.panelPassword.SuspendLayout()
         Me.panelReport.SuspendLayout()
         CType(Me.chReport, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -115,6 +116,7 @@ Partial Class FormCashier
         '
         Me.Panel2.BackColor = System.Drawing.Color.DodgerBlue
         Me.Panel2.Controls.Add(Me.btnPassword)
+        Me.Panel2.Controls.Add(Me.btnReport)
         Me.Panel2.Controls.Add(Me.btnPayment)
         Me.Panel2.Controls.Add(Me.btnAddOrder)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
@@ -130,12 +132,26 @@ Partial Class FormCashier
         Me.btnPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnPassword.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnPassword.ForeColor = System.Drawing.Color.White
-        Me.btnPassword.Location = New System.Drawing.Point(259, 0)
+        Me.btnPassword.Location = New System.Drawing.Point(389, 0)
         Me.btnPassword.Name = "btnPassword"
         Me.btnPassword.Size = New System.Drawing.Size(115, 48)
         Me.btnPassword.TabIndex = 3
         Me.btnPassword.Text = "Password"
         Me.btnPassword.UseVisualStyleBackColor = True
+        '
+        'btnReport
+        '
+        Me.btnReport.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnReport.FlatAppearance.BorderSize = 0
+        Me.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReport.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReport.ForeColor = System.Drawing.Color.White
+        Me.btnReport.Location = New System.Drawing.Point(259, 0)
+        Me.btnReport.Name = "btnReport"
+        Me.btnReport.Size = New System.Drawing.Size(130, 48)
+        Me.btnReport.TabIndex = 4
+        Me.btnReport.Text = "Report"
+        Me.btnReport.UseVisualStyleBackColor = True
         '
         'btnPayment
         '
@@ -263,7 +279,6 @@ Partial Class FormCashier
         Me.lblTable.TabIndex = 25
         Me.lblTable.Text = "Table : 1"
         Me.lblTable.TextAlign = System.Drawing.ContentAlignment.TopRight
-        Me.lblTable.Visible = False
         '
         'btnOrder
         '
@@ -328,6 +343,48 @@ Partial Class FormCashier
         Me.dgAddOrderList.ReadOnly = True
         Me.dgAddOrderList.Size = New System.Drawing.Size(504, 149)
         Me.dgAddOrderList.TabIndex = 20
+        '
+        'Column3
+        '
+        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column3.DataPropertyName = "MenuId"
+        Me.Column3.HeaderText = "MenuId"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 68
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Name"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Name"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Column1.DataPropertyName = "Qty"
+        Me.Column1.HeaderText = "Qty"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 48
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Price"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Price"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.DataPropertyName = "Total"
+        Me.Column2.HeaderText = "Total"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         '
         'Label3
         '
@@ -488,107 +545,6 @@ Partial Class FormCashier
         Me.btnPaymentSave.Text = "Save"
         Me.btnPaymentSave.UseVisualStyleBackColor = False
         '
-        'gbPayCredit
-        '
-        Me.gbPayCredit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.gbPayCredit.Controls.Add(Me.tbCardNumber)
-        Me.gbPayCredit.Controls.Add(Me.Label10)
-        Me.gbPayCredit.Controls.Add(Me.cbBankName)
-        Me.gbPayCredit.Controls.Add(Me.Label9)
-        Me.gbPayCredit.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbPayCredit.Location = New System.Drawing.Point(89, 506)
-        Me.gbPayCredit.Name = "gbPayCredit"
-        Me.gbPayCredit.Size = New System.Drawing.Size(642, 57)
-        Me.gbPayCredit.TabIndex = 26
-        Me.gbPayCredit.TabStop = False
-        Me.gbPayCredit.Text = "Credit Card"
-        '
-        'gbCash
-        '
-        Me.gbCash.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.gbCash.Controls.Add(Me.tbCashBayar)
-        Me.gbCash.Controls.Add(Me.Label12)
-        Me.gbCash.Controls.Add(Me.lblKembalian)
-        Me.gbCash.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.gbCash.Location = New System.Drawing.Point(89, 506)
-        Me.gbCash.Name = "gbCash"
-        Me.gbCash.Size = New System.Drawing.Size(642, 57)
-        Me.gbCash.TabIndex = 31
-        Me.gbCash.TabStop = False
-        Me.gbCash.Text = "Cash"
-        '
-        'tbCashBayar
-        '
-        Me.tbCashBayar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCashBayar.Location = New System.Drawing.Point(64, 22)
-        Me.tbCashBayar.Name = "tbCashBayar"
-        Me.tbCashBayar.Size = New System.Drawing.Size(233, 25)
-        Me.tbCashBayar.TabIndex = 30
-        '
-        'Label12
-        '
-        Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(6, 25)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(54, 17)
-        Me.Label12.TabIndex = 29
-        Me.Label12.Text = "Bayar : "
-        '
-        'lblKembalian
-        '
-        Me.lblKembalian.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.lblKembalian.AutoSize = True
-        Me.lblKembalian.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblKembalian.Location = New System.Drawing.Point(319, 25)
-        Me.lblKembalian.Name = "lblKembalian"
-        Me.lblKembalian.Size = New System.Drawing.Size(112, 17)
-        Me.lblKembalian.TabIndex = 27
-        Me.lblKembalian.Text = "Kembalian : Rp.0"
-        '
-        'tbCardNumber
-        '
-        Me.tbCardNumber.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCardNumber.Location = New System.Drawing.Point(114, 22)
-        Me.tbCardNumber.Name = "tbCardNumber"
-        Me.tbCardNumber.Size = New System.Drawing.Size(198, 25)
-        Me.tbCardNumber.TabIndex = 30
-        '
-        'Label10
-        '
-        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(6, 25)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(102, 17)
-        Me.Label10.TabIndex = 29
-        Me.Label10.Text = "Card Number : "
-        '
-        'cbBankName
-        '
-        Me.cbBankName.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbBankName.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbBankName.FormattingEnabled = True
-        Me.cbBankName.Items.AddRange(New Object() {"BCA", "BNI", "BRI", "Mandiri", "BTN", "Danamon"})
-        Me.cbBankName.Location = New System.Drawing.Point(415, 22)
-        Me.cbBankName.Name = "cbBankName"
-        Me.cbBankName.Size = New System.Drawing.Size(221, 25)
-        Me.cbBankName.TabIndex = 28
-        '
-        'Label9
-        '
-        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(319, 25)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(90, 17)
-        Me.Label9.TabIndex = 27
-        Me.Label9.Text = "Bank Name : "
-        '
         'cbPayment
         '
         Me.cbPayment.Anchor = System.Windows.Forms.AnchorStyles.Bottom
@@ -658,61 +614,6 @@ Partial Class FormCashier
         Me.dgPayment.Size = New System.Drawing.Size(642, 352)
         Me.dgPayment.TabIndex = 20
         '
-        'Label11
-        '
-        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.ForeColor = System.Drawing.Color.Black
-        Me.Label11.Location = New System.Drawing.Point(348, 10)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(150, 45)
-        Me.Label11.TabIndex = 4
-        Me.Label11.Text = "Payment"
-        Me.Label11.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'Column3
-        '
-        Me.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column3.DataPropertyName = "MenuId"
-        Me.Column3.HeaderText = "MenuId"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 68
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "Name"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Column1.DataPropertyName = "Qty"
-        Me.Column1.HeaderText = "Qty"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 48
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "Price"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Price"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.DataPropertyName = "Total"
-        Me.Column2.HeaderText = "Total"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
@@ -753,6 +654,120 @@ Partial Class FormCashier
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         Me.Column4.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Location = New System.Drawing.Point(348, 10)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(150, 45)
+        Me.Label11.TabIndex = 4
+        Me.Label11.Text = "Payment"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'gbCash
+        '
+        Me.gbCash.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gbCash.Controls.Add(Me.tbCashBayar)
+        Me.gbCash.Controls.Add(Me.Label12)
+        Me.gbCash.Controls.Add(Me.lblKembalian)
+        Me.gbCash.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbCash.Location = New System.Drawing.Point(89, 506)
+        Me.gbCash.Name = "gbCash"
+        Me.gbCash.Size = New System.Drawing.Size(642, 57)
+        Me.gbCash.TabIndex = 31
+        Me.gbCash.TabStop = False
+        Me.gbCash.Text = "Cash"
+        '
+        'tbCashBayar
+        '
+        Me.tbCashBayar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCashBayar.Location = New System.Drawing.Point(64, 22)
+        Me.tbCashBayar.Name = "tbCashBayar"
+        Me.tbCashBayar.Size = New System.Drawing.Size(233, 25)
+        Me.tbCashBayar.TabIndex = 30
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(6, 25)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(54, 17)
+        Me.Label12.TabIndex = 29
+        Me.Label12.Text = "Bayar : "
+        '
+        'lblKembalian
+        '
+        Me.lblKembalian.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.lblKembalian.AutoSize = True
+        Me.lblKembalian.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblKembalian.Location = New System.Drawing.Point(319, 25)
+        Me.lblKembalian.Name = "lblKembalian"
+        Me.lblKembalian.Size = New System.Drawing.Size(112, 17)
+        Me.lblKembalian.TabIndex = 27
+        Me.lblKembalian.Text = "Kembalian : Rp.0"
+        '
+        'gbPayCredit
+        '
+        Me.gbPayCredit.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.gbPayCredit.Controls.Add(Me.tbCardNumber)
+        Me.gbPayCredit.Controls.Add(Me.Label10)
+        Me.gbPayCredit.Controls.Add(Me.cbBankName)
+        Me.gbPayCredit.Controls.Add(Me.Label9)
+        Me.gbPayCredit.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.gbPayCredit.Location = New System.Drawing.Point(89, 506)
+        Me.gbPayCredit.Name = "gbPayCredit"
+        Me.gbPayCredit.Size = New System.Drawing.Size(642, 57)
+        Me.gbPayCredit.TabIndex = 26
+        Me.gbPayCredit.TabStop = False
+        Me.gbPayCredit.Text = "Credit Card"
+        '
+        'tbCardNumber
+        '
+        Me.tbCardNumber.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCardNumber.Location = New System.Drawing.Point(114, 22)
+        Me.tbCardNumber.Name = "tbCardNumber"
+        Me.tbCardNumber.Size = New System.Drawing.Size(198, 25)
+        Me.tbCardNumber.TabIndex = 30
+        '
+        'Label10
+        '
+        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(6, 25)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(102, 17)
+        Me.Label10.TabIndex = 29
+        Me.Label10.Text = "Card Number : "
+        '
+        'cbBankName
+        '
+        Me.cbBankName.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbBankName.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbBankName.FormattingEnabled = True
+        Me.cbBankName.Items.AddRange(New Object() {"BCA", "BNI", "BRI", "Mandiri", "BTN", "Danamon"})
+        Me.cbBankName.Location = New System.Drawing.Point(415, 22)
+        Me.cbBankName.Name = "cbBankName"
+        Me.cbBankName.Size = New System.Drawing.Size(221, 25)
+        Me.cbBankName.TabIndex = 28
+        '
+        'Label9
+        '
+        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(319, 25)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(90, 17)
+        Me.Label9.TabIndex = 27
+        Me.Label9.Text = "Bank Name : "
         '
         'panelPassword
         '
@@ -875,61 +890,9 @@ Partial Class FormCashier
         Me.panelReport.Size = New System.Drawing.Size(800, 600)
         Me.panelReport.TabIndex = 26
         '
-        'Label21
-        '
-        Me.Label21.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.ForeColor = System.Drawing.Color.Black
-        Me.Label21.Location = New System.Drawing.Point(338, 10)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(123, 45)
-        Me.Label21.TabIndex = 4
-        Me.Label21.Text = "Report"
-        Me.Label21.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'chReport
-        '
-        Me.chReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
-        ChartArea1.Name = "ChartArea1"
-        Me.chReport.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.chReport.Legends.Add(Legend1)
-        Me.chReport.Location = New System.Drawing.Point(69, 100)
-        Me.chReport.Name = "chReport"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.chReport.Series.Add(Series1)
-        Me.chReport.Size = New System.Drawing.Size(689, 488)
-        Me.chReport.TabIndex = 5
-        Me.chReport.Text = "Chart1"
-        '
-        'Label17
-        '
-        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Black
-        Me.Label17.Location = New System.Drawing.Point(66, 77)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(40, 17)
-        Me.Label17.TabIndex = 18
-        Me.Label17.Text = "From"
-        Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'dtReportFrom
-        '
-        Me.dtReportFrom.CustomFormat = "MMMM yyyy"
-        Me.dtReportFrom.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtReportFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dtReportFrom.Location = New System.Drawing.Point(113, 73)
-        Me.dtReportFrom.Name = "dtReportFrom"
-        Me.dtReportFrom.Size = New System.Drawing.Size(200, 22)
-        Me.dtReportFrom.TabIndex = 19
-        '
         'dtReportTo
         '
+        Me.dtReportTo.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.dtReportTo.CustomFormat = "MMMM yyyy"
         Me.dtReportTo.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dtReportTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom
@@ -950,6 +913,60 @@ Partial Class FormCashier
         Me.Label18.TabIndex = 20
         Me.Label18.Text = "To"
         Me.Label18.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'dtReportFrom
+        '
+        Me.dtReportFrom.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.dtReportFrom.CustomFormat = "MMMM yyyy"
+        Me.dtReportFrom.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dtReportFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dtReportFrom.Location = New System.Drawing.Point(113, 73)
+        Me.dtReportFrom.Name = "dtReportFrom"
+        Me.dtReportFrom.Size = New System.Drawing.Size(200, 22)
+        Me.dtReportFrom.TabIndex = 19
+        '
+        'Label17
+        '
+        Me.Label17.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Black
+        Me.Label17.Location = New System.Drawing.Point(66, 77)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(40, 17)
+        Me.Label17.TabIndex = 18
+        Me.Label17.Text = "From"
+        Me.Label17.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'chReport
+        '
+        Me.chReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        ChartArea1.Name = "ChartArea1"
+        Me.chReport.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.chReport.Legends.Add(Legend1)
+        Me.chReport.Location = New System.Drawing.Point(69, 100)
+        Me.chReport.Name = "chReport"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.chReport.Series.Add(Series1)
+        Me.chReport.Size = New System.Drawing.Size(689, 477)
+        Me.chReport.TabIndex = 5
+        Me.chReport.Text = "Chart1"
+        '
+        'Label21
+        '
+        Me.Label21.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label21.AutoSize = True
+        Me.Label21.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.ForeColor = System.Drawing.Color.Black
+        Me.Label21.Location = New System.Drawing.Point(338, 10)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(123, 45)
+        Me.Label21.TabIndex = 4
+        Me.Label21.Text = "Report"
+        Me.Label21.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'FormCashier
         '
@@ -977,11 +994,11 @@ Partial Class FormCashier
         CType(Me.dgMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelPayment.ResumeLayout(False)
         Me.panelPayment.PerformLayout()
-        Me.gbPayCredit.ResumeLayout(False)
-        Me.gbPayCredit.PerformLayout()
+        CType(Me.dgPayment, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbCash.ResumeLayout(False)
         Me.gbCash.PerformLayout()
-        CType(Me.dgPayment, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbPayCredit.ResumeLayout(False)
+        Me.gbPayCredit.PerformLayout()
         Me.panelPassword.ResumeLayout(False)
         Me.panelPassword.PerformLayout()
         Me.panelReport.ResumeLayout(False)
@@ -1061,4 +1078,5 @@ Partial Class FormCashier
     Friend WithEvents dtReportFrom As DateTimePicker
     Friend WithEvents dtReportTo As DateTimePicker
     Friend WithEvents Label18 As Label
+    Friend WithEvents btnReport As Button
 End Class
