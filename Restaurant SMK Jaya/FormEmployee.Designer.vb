@@ -154,7 +154,7 @@ Partial Class FormEmployee
         Me.cbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbPosition.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPosition.FormattingEnabled = True
-        Me.cbPosition.Items.AddRange(New Object() {"Admin", "Chef", "Cashier"})
+        Me.cbPosition.Items.AddRange(New Object() {"Admin", "Chef", "Cashier", "Waiter"})
         Me.cbPosition.Location = New System.Drawing.Point(41, 294)
         Me.cbPosition.Name = "cbPosition"
         Me.cbPosition.Size = New System.Drawing.Size(271, 25)

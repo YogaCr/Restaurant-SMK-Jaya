@@ -26,6 +26,7 @@ Public Class FormEmployee
         End If
         If cbPosition.SelectedIndex = -1 Then
             MessageBox.Show(Nothing, "Semua field harus terisi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
         End If
         If id Is Nothing Then
             AddEmployee()

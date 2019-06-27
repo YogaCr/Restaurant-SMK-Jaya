@@ -25,7 +25,7 @@ Public Class FormChef
 
     Sub GetOrderDetail()
         CekKoneksi()
-        Dim c As New SqlDataAdapter("Select [DetailId],[MsMenu].[Name],[Qty],[Status] from [DetailOrder] join [MsMenu] on([MsMenu].[MenuId]=[DetailOrder].[MenuId]) where [OrderId]='" + cbOrderId.SelectedValue.ToString + "'", konek)
+        Dim c As New SqlDataAdapter("Select [DetailId],[MsMenu].[Name],[Qty],[Status],[MsMenu].[MenuId] from [DetailOrder] join [MsMenu] on([MsMenu].[MenuId]=[DetailOrder].[MenuId]) where [OrderId]='" + cbOrderId.SelectedValue.ToString + "'", konek)
         Dim d As New DataSet
         c.Fill(d)
         dgAddOrderList.DataSource = d.Tables(0)
@@ -81,7 +81,7 @@ Public Class FormChef
 
     Private Sub dgAddOrderList_CellEnter(sender As Object, e As DataGridViewCellEventArgs) Handles dgAddOrderList.CellEnter
         Dim util As New Util
-        pbMenu.Image = util.GetImage(dgAddOrderList.Item(0, e.RowIndex).Value.ToString)
+        pbMenu.Image = util.GetImage(dgAddOrderList.Item(4, e.RowIndex).Value.ToString)
     End Sub
 
     Private Sub btnSavePassword_Click(sender As Object, e As EventArgs) Handles btnSavePassword.Click
@@ -111,5 +111,9 @@ Public Class FormChef
             Dim f As New FormLogin
             Close()
         End If
+    End Sub
+
+    Private Sub btnViewOrder_Click(sender As Object, e As EventArgs) Handles btnViewOrder.Click
+        ButtonNav(sender, panelAddOrder)
     End Sub
 End Class

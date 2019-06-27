@@ -34,27 +34,28 @@ Partial Class FormChef
         Me.panelAddOrder = New System.Windows.Forms.Panel()
         Me.cbOrderId = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.dgAddOrderList = New System.Windows.Forms.DataGridView()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.pbMenu = New System.Windows.Forms.PictureBox()
-        Me.dgAddOrderList = New System.Windows.Forms.DataGridView()
+        Me.panelPassword = New System.Windows.Forms.Panel()
+        Me.btnSavePassword = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.tbConfirmPassword = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.tbNewPassword = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.tbOldPassword = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.panelPassword = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.tbOldPassword = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.tbNewPassword = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.tbConfirmPassword = New System.Windows.Forms.TextBox()
-        Me.btnSavePassword = New System.Windows.Forms.Button()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.panelAddOrder.SuspendLayout()
-        CType(Me.pbMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgAddOrderList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbMenu, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelPassword.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -208,6 +209,20 @@ Partial Class FormChef
         Me.Label6.TabIndex = 23
         Me.Label6.Text = "Order ID"
         '
+        'dgAddOrderList
+        '
+        Me.dgAddOrderList.AllowUserToAddRows = False
+        Me.dgAddOrderList.AllowUserToDeleteRows = False
+        Me.dgAddOrderList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dgAddOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgAddOrderList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.DataGridViewTextBoxColumn5, Me.Column1, Me.Column2, Me.Column4})
+        Me.dgAddOrderList.Location = New System.Drawing.Point(89, 86)
+        Me.dgAddOrderList.Name = "dgAddOrderList"
+        Me.dgAddOrderList.Size = New System.Drawing.Size(504, 332)
+        Me.dgAddOrderList.TabIndex = 20
+        '
         'Label8
         '
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -231,19 +246,112 @@ Partial Class FormChef
         Me.pbMenu.TabIndex = 16
         Me.pbMenu.TabStop = False
         '
-        'dgAddOrderList
+        'panelPassword
         '
-        Me.dgAddOrderList.AllowUserToAddRows = False
-        Me.dgAddOrderList.AllowUserToDeleteRows = False
-        Me.dgAddOrderList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dgAddOrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgAddOrderList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column3, Me.DataGridViewTextBoxColumn5, Me.Column1, Me.Column2})
-        Me.dgAddOrderList.Location = New System.Drawing.Point(89, 86)
-        Me.dgAddOrderList.Name = "dgAddOrderList"
-        Me.dgAddOrderList.Size = New System.Drawing.Size(504, 332)
-        Me.dgAddOrderList.TabIndex = 20
+        Me.panelPassword.Controls.Add(Me.btnSavePassword)
+        Me.panelPassword.Controls.Add(Me.Label9)
+        Me.panelPassword.Controls.Add(Me.tbConfirmPassword)
+        Me.panelPassword.Controls.Add(Me.Label7)
+        Me.panelPassword.Controls.Add(Me.tbNewPassword)
+        Me.panelPassword.Controls.Add(Me.Label5)
+        Me.panelPassword.Controls.Add(Me.tbOldPassword)
+        Me.panelPassword.Controls.Add(Me.Label3)
+        Me.panelPassword.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.panelPassword.Location = New System.Drawing.Point(0, 0)
+        Me.panelPassword.Name = "panelPassword"
+        Me.panelPassword.Size = New System.Drawing.Size(800, 600)
+        Me.panelPassword.TabIndex = 25
+        '
+        'btnSavePassword
+        '
+        Me.btnSavePassword.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.btnSavePassword.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnSavePassword.FlatAppearance.BorderSize = 0
+        Me.btnSavePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSavePassword.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSavePassword.ForeColor = System.Drawing.Color.White
+        Me.btnSavePassword.Location = New System.Drawing.Point(502, 259)
+        Me.btnSavePassword.Name = "btnSavePassword"
+        Me.btnSavePassword.Size = New System.Drawing.Size(58, 26)
+        Me.btnSavePassword.TabIndex = 25
+        Me.btnSavePassword.Text = "Save"
+        Me.btnSavePassword.UseVisualStyleBackColor = False
+        '
+        'Label9
+        '
+        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(286, 212)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(129, 13)
+        Me.Label9.TabIndex = 11
+        Me.Label9.Text = "Confirm New Password"
+        '
+        'tbConfirmPassword
+        '
+        Me.tbConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.tbConfirmPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbConfirmPassword.Location = New System.Drawing.Point(289, 228)
+        Me.tbConfirmPassword.Name = "tbConfirmPassword"
+        Me.tbConfirmPassword.Size = New System.Drawing.Size(271, 25)
+        Me.tbConfirmPassword.TabIndex = 10
+        Me.tbConfirmPassword.UseSystemPasswordChar = True
+        '
+        'Label7
+        '
+        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(286, 148)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(84, 13)
+        Me.Label7.TabIndex = 9
+        Me.Label7.Text = "New Password"
+        '
+        'tbNewPassword
+        '
+        Me.tbNewPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.tbNewPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNewPassword.Location = New System.Drawing.Point(289, 164)
+        Me.tbNewPassword.Name = "tbNewPassword"
+        Me.tbNewPassword.Size = New System.Drawing.Size(271, 25)
+        Me.tbNewPassword.TabIndex = 8
+        Me.tbNewPassword.UseSystemPasswordChar = True
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(286, 96)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(78, 13)
+        Me.Label5.TabIndex = 7
+        Me.Label5.Text = "Old Password"
+        '
+        'tbOldPassword
+        '
+        Me.tbOldPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.tbOldPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbOldPassword.Location = New System.Drawing.Point(289, 112)
+        Me.tbOldPassword.Name = "tbOldPassword"
+        Me.tbOldPassword.Size = New System.Drawing.Size(271, 25)
+        Me.tbOldPassword.TabIndex = 6
+        Me.tbOldPassword.UseSystemPasswordChar = True
+        '
+        'Label3
+        '
+        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Black
+        Me.Label3.Location = New System.Drawing.Point(281, 29)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(284, 45)
+        Me.Label3.TabIndex = 5
+        Me.Label3.Text = "Change Password"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'Column3
         '
@@ -280,112 +388,13 @@ Partial Class FormChef
         Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.Column2.Width = 43
         '
-        'panelPassword
+        'Column4
         '
-        Me.panelPassword.Controls.Add(Me.btnSavePassword)
-        Me.panelPassword.Controls.Add(Me.Label9)
-        Me.panelPassword.Controls.Add(Me.tbConfirmPassword)
-        Me.panelPassword.Controls.Add(Me.Label7)
-        Me.panelPassword.Controls.Add(Me.tbNewPassword)
-        Me.panelPassword.Controls.Add(Me.Label5)
-        Me.panelPassword.Controls.Add(Me.tbOldPassword)
-        Me.panelPassword.Controls.Add(Me.Label3)
-        Me.panelPassword.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.panelPassword.Location = New System.Drawing.Point(0, 0)
-        Me.panelPassword.Name = "panelPassword"
-        Me.panelPassword.Size = New System.Drawing.Size(800, 600)
-        Me.panelPassword.TabIndex = 25
-        '
-        'Label3
-        '
-        Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(281, 29)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(284, 45)
-        Me.Label3.TabIndex = 5
-        Me.Label3.Text = "Change Password"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'Label5
-        '
-        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(286, 96)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(78, 13)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "Old Password"
-        '
-        'tbOldPassword
-        '
-        Me.tbOldPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.tbOldPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbOldPassword.Location = New System.Drawing.Point(289, 112)
-        Me.tbOldPassword.Name = "tbOldPassword"
-        Me.tbOldPassword.Size = New System.Drawing.Size(271, 25)
-        Me.tbOldPassword.TabIndex = 6
-        Me.tbOldPassword.UseSystemPasswordChar = True
-        '
-        'Label7
-        '
-        Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(286, 148)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(84, 13)
-        Me.Label7.TabIndex = 9
-        Me.Label7.Text = "New Password"
-        '
-        'tbNewPassword
-        '
-        Me.tbNewPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.tbNewPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNewPassword.Location = New System.Drawing.Point(289, 164)
-        Me.tbNewPassword.Name = "tbNewPassword"
-        Me.tbNewPassword.Size = New System.Drawing.Size(271, 25)
-        Me.tbNewPassword.TabIndex = 8
-        Me.tbNewPassword.UseSystemPasswordChar = True
-        '
-        'Label9
-        '
-        Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(286, 212)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(129, 13)
-        Me.Label9.TabIndex = 11
-        Me.Label9.Text = "Confirm New Password"
-        '
-        'tbConfirmPassword
-        '
-        Me.tbConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.tbConfirmPassword.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbConfirmPassword.Location = New System.Drawing.Point(289, 228)
-        Me.tbConfirmPassword.Name = "tbConfirmPassword"
-        Me.tbConfirmPassword.Size = New System.Drawing.Size(271, 25)
-        Me.tbConfirmPassword.TabIndex = 10
-        Me.tbConfirmPassword.UseSystemPasswordChar = True
-        '
-        'btnSavePassword
-        '
-        Me.btnSavePassword.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.btnSavePassword.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.btnSavePassword.FlatAppearance.BorderSize = 0
-        Me.btnSavePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSavePassword.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSavePassword.ForeColor = System.Drawing.Color.White
-        Me.btnSavePassword.Location = New System.Drawing.Point(502, 259)
-        Me.btnSavePassword.Name = "btnSavePassword"
-        Me.btnSavePassword.Size = New System.Drawing.Size(58, 26)
-        Me.btnSavePassword.TabIndex = 25
-        Me.btnSavePassword.Text = "Save"
-        Me.btnSavePassword.UseVisualStyleBackColor = False
+        Me.Column4.DataPropertyName = "MenuId"
+        Me.Column4.HeaderText = "MenuId"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Visible = False
         '
         'FormChef
         '
@@ -405,8 +414,8 @@ Partial Class FormChef
         Me.Panel1.PerformLayout()
         Me.panelAddOrder.ResumeLayout(False)
         Me.panelAddOrder.PerformLayout()
-        CType(Me.pbMenu, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgAddOrderList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbMenu, System.ComponentModel.ISupportInitialize).EndInit()
         Me.panelPassword.ResumeLayout(False)
         Me.panelPassword.PerformLayout()
         Me.ResumeLayout(False)
@@ -427,10 +436,6 @@ Partial Class FormChef
     Friend WithEvents cbOrderId As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents dgAddOrderList As DataGridView
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewComboBoxColumn
     Friend WithEvents panelPassword As Panel
     Friend WithEvents Label3 As Label
     Friend WithEvents Label9 As Label
@@ -440,4 +445,9 @@ Partial Class FormChef
     Friend WithEvents Label5 As Label
     Friend WithEvents tbOldPassword As TextBox
     Friend WithEvents btnSavePassword As Button
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewComboBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
 End Class
