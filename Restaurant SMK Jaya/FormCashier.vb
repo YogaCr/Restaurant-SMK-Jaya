@@ -307,6 +307,9 @@ Public Class FormCashier
     End Sub
 
     Sub GetOrderDetail()
+        If cbOrderId.Items.Count < 1 Then
+            Return
+        End If
         If konek.State = ConnectionState.Closed Then
             konek.Open()
         End If
@@ -362,6 +365,7 @@ Public Class FormCashier
         If MessageBox.Show(Nothing, "Apakah anda yakin ingin keluar?", "Keluar?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             My.Settings.Id = ""
             Dim f As New FormLogin
+            f.Show()
             Close()
         End If
     End Sub

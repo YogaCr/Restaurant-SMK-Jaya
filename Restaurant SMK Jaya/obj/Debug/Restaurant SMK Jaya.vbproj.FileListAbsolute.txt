@@ -15,3 +15,15 @@ c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK 
 c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormEmployee.resources
 c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormMember.resources
 c:\users\smk telkom malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\obj\Debug\Restaurant_SMK_Jaya.FormMenu.resources
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.Data.AdoDotNetInterop.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.ReportSource.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.Shared.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.Web.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\CrystalDecisions.Windows.Forms.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\FlashControlV71.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\log4net.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\SAPBusinessObjects.WPF.Viewer.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\SAPBusinessObjects.WPF.ViewerShared.dll
+C:\Users\SMK Telkom Malang\documents\visual studio 2017\Projects\Restaurant SMK Jaya\Restaurant SMK Jaya\bin\Debug\log4net.xml

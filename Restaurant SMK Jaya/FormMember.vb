@@ -84,4 +84,22 @@ Public Class FormMember
             MessageBox.Show(Nothing, "Gagal mengedit member", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
     End Sub
+
+    Private Sub FormMember_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If id IsNot Nothing Then
+            If koneksi.State = ConnectionState.Closed Then
+                koneksi.Open()
+            End If
+            Dim cmd As New SqlCommand("Select * from [MsMember] where [MemberId]=@id", koneksi)
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim reader = cmd.ExecuteReader
+            If reader.Read Then
+                tbName.Text = reader.GetString(1)
+                tbEmail.Text = reader.GetString(2)
+                tbHandphone.Text = reader.GetString(3)
+            End If
+            reader.Close()
+            koneksi.Close()
+        End If
+    End Sub
 End Class

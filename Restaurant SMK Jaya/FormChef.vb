@@ -109,6 +109,7 @@ Public Class FormChef
         If MessageBox.Show(Nothing, "Apakah anda yakin ingin keluar?", "Keluar?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
             My.Settings.Id = ""
             Dim f As New FormLogin
+            f.Show()
             Close()
         End If
     End Sub
